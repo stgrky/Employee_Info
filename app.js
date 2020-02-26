@@ -48,35 +48,46 @@ function askQuestion() {
     })
 }
 
-function makeHTML(){
-    let finalHTML=mainHTML(html)
-    fs.writeFile("./index.html",finalHTML,function(error){})
+function makeHTML() {
+
+    for (let index = 0; index < allEmployees.length; index++) {
+        if (allEmployees[index].getRole() === "Manager") {
+            html = html + managerHTML(allEmployees[index])
+        } else if (allEmployees[index].getRole() === "Engineer") {
+            html = html + engineerHTML(allEmployees[index])
+        }
+        else if (allEmployees[index].getRole() === "Intern") {
+            html = html + internHTML(allEmployees[index])
+        }
+    }
+    let finalHTML = mainHTML(html)
+    fs.writeFile("./index.html", finalHTML, function (error) { })
 }
 
 function addManager() {
     inquirer.prompt([{
-        type:"input",
+        type: "input",
         message: "What is your name?",
         name: "employeeName"
 
-    },{
-        type:"input",
+    }, {
+        type: "input",
         message: "What is your email?",
-        name:"employeeEmail"
-    },{
-        type:"input",
-        message:"What is your office number?",
-        name:"employeeOfficeNumber"
-    }]).then(function(input){
-        let manager= new Manager(input.employeeName,id++,input.employeeEmail,input.employeeOfficeNumber)
+        name: "employeeEmail"
+    }, {
+        type: "input",
+        message: "What is your office number?",
+        name: "employeeOfficeNumber"
+    }]).then(function (input) {
+        let manager = new Manager(input.employeeName, id++, input.employeeEmail, input.employeeOfficeNumber)
         allEmployees.push(manager)
 
-        for (let index = 0; index < allEmployees.length; index++) {
+        // for (let index = 0; index < allEmployees.length; index++) {
 
-            if (allEmployees[index].getRole()==="Manager"){
-                html=html+managerHTML(allEmployees[index])
-            }
-        }
+        //     if (allEmployees[index].getRole()==="Manager"){
+        //         html=html+managerHTML(allEmployees[index])
+        //     }
+        // }
 
         console.log(allEmployees)
         console.log(html)
@@ -86,28 +97,28 @@ function addManager() {
 
 function addEngineer() {
     inquirer.prompt([{
-        type:"input",
+        type: "input",
         message: "What is your name?",
         name: "employeeName"
 
-    },{
-        type:"input",
+    }, {
+        type: "input",
         message: "What is your email",
-        name:"employeeEmail"
-    },{
-        type:"input",
-        message:"What is your Github?",
-        name:"employeeGithub"
-    }]).then(function(input){
-        let engineer = new Engineer(input.employeeName,id++,input.employeeEmail,input.employeeGithub)
+        name: "employeeEmail"
+    }, {
+        type: "input",
+        message: "What is your Github?",
+        name: "employeeGithub"
+    }]).then(function (input) {
+        let engineer = new Engineer(input.employeeName, id++, input.employeeEmail, input.employeeGithub)
         allEmployees.push(engineer)
 
-        for (let index = 0; index < allEmployees.length; index++) {
+        // for (let index = 0; index < allEmployees.length; index++) {
 
-            if (allEmployees[index].getRole()==="Engineer"){
-                html=html+engineerHTML(allEmployees[index])
-            }
-        }
+        //     if (allEmployees[index].getRole()==="Engineer"){
+        //         html=html+engineerHTML(allEmployees[index])
+        //     }
+        // }
 
         console.log(allEmployees)
         console.log(html)
@@ -117,28 +128,28 @@ function addEngineer() {
 
 function addIntern() {
     inquirer.prompt([{
-        type:"input",
+        type: "input",
         message: "What is your name?",
         name: "employeeName"
 
-    },{
-        type:"input",
+    }, {
+        type: "input",
         message: "What is your email",
-        name:"employeeEmail"
-    },{
-        type:"input",
-        message:"What is your school?",
-        name:"employeeSchool"
-    }]).then(function(input){
-        let intern = new Intern(input.employeeName,id++,input.employeeEmail,input.employeeSchool)
+        name: "employeeEmail"
+    }, {
+        type: "input",
+        message: "What is your school?",
+        name: "employeeSchool"
+    }]).then(function (input) {
+        let intern = new Intern(input.employeeName, id++, input.employeeEmail, input.employeeSchool)
         allEmployees.push(intern)
 
-        for (let index = 0; index < allEmployees.length; index++) {
+        // for (let index = 0; index < allEmployees.length; index++) {
 
-            if (allEmployees[index].getRole()==="Intern"){
-                html=html+internHTML(allEmployees[index])
-            }
-        }
+        //     if (allEmployees[index].getRole()==="Intern"){
+        //         html=html+internHTML(allEmployees[index])
+        //     }
+        // }
 
         console.log(allEmployees)
         console.log(html)

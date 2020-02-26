@@ -1,6 +1,6 @@
 function engineer(data){
-return
-`<div class="card employee-card">
+return`
+<div class="card employee-card">
     <div class="card-header">
         <h2 class="card-title">${data.name}</h2>
         <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>Engineer</h3>
@@ -12,7 +12,8 @@ return
             <li class="list-group-item">GitHub: <a href="https://github.com/${data.github}" target="_blank" rel="noopener noreferrer">${data.github}</a></li>
         </ul>
     </div>
-</div>`
+</div>
+`
 }
 
 module.exports=engineer

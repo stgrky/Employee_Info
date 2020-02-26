@@ -1,9 +1,9 @@
 function intern(data){
-return
-`<div class="card employee-card">
+return`
+<div class="card employee-card">
     <div class="card-header">
         <h2 class="card-title">${data.name}</h2>
-        <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>{{ role }}</h3>
+        <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Intern</h3>
     </div>
     <div class="card-body">
         <ul class="list-group">
